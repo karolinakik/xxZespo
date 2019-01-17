@@ -1,0 +1,45 @@
+<%= form_with scope: :event, url: events_path, local: true do |form| %>
+ 
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+   <p>
+    <%= form.label :genre %><br>
+    <%= form.text_field :genre %>
+  </p>
+  <p>
+    <%= form.label :etype %><br>
+    <%= form.text_field :etype %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :descreption %>
+  </p>
+  <p>
+    <%= form.label :organiser %><br>
+    <%= form.text_field :organiser %>
+  </p>
+  <p>
+    <%= form.label :day %><br>
+    <%= form.date_field :day %>
+  </p>
+   <p>
+    <%= form.label :start_time %><br>
+    <%= form.time_field :start_time %>
+  </p>
+  <p>
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </p>
+  <p>
+    <%= form.label :place_id %><br>
+    <%= form.text_field :place_id %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', events_path %>

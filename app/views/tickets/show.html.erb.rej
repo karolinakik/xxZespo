@@ -1,0 +1,13 @@
+diff a/app/views/tickets/show.html.erb b/app/views/tickets/show.html.erb	(rejected hunks)
+@@ -35,6 +35,11 @@
+   <% @histories.each do |history| %>
+     <tr>
+       <td><%= history.id %> </td> 
++        <td><%= history.name %></td>
++        <td><%= history.user_id %></td>
++        <td><%= history.order_data %></td>
++        <td><%= history.event_id %></td>
++        <td><%= history.estatus %></td>
+     </tr>
+   <% end %>
+       </table>

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="jumbotron">
+      <table>
+          <tr>
+            <th>Ticket type</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+              <th>Place</th>
+            <th colspan="2"></th>
+          </tr>
+          <tr>
+            <td><%= @ticket.etype %> </td> 
+            <td><%= @ticket.name %> </td>
+            <td><%= @ticket.price %> </td>
+            <td><%= @ticket.quantity %> </td> 
+            <td><%= @ticket.place_id %> </td>
+          </tr>
+     </table>
+
+      <%= button_to 'Confirm', {:controller => "tickets", :action => "create", :name => @ticket.name, :ticket_id=> session[:id]} , {:method=>:post}  %>
+      
+      <h2>History</h2>
+      <table>
+          <% @histories.each do |history| %>
+            <tr>
+              <td><%= history.id %> </td> 
+                <td><%= history.name %></td>
+                <td><%= history.user_id %></td>
+                <td><%= history.order_data %></td>
+                <td><%= history.event_id %></td>
+                <td><%= history.estatus %></td>
+            </tr>
+          <% end %>
+      </table>
+      
+  </div>
+</div>

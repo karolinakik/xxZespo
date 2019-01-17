@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="jumbotron">
+      <p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+<p>
+  <strong>Genre:</strong>
+  <%= @event.genre %>
+</p>
+<p>
+  <strong>Type:</strong>
+  <%= @event.etype %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+<p>
+  <strong>Organiser:</strong>
+  <%= @event.organiser %>
+</p>
+<p>
+  <strong>Day:</strong>
+  <%= @event.day %>
+</p>
+ <p>
+  <strong>Start time:</strong>
+  <%= @event.start_time %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @event.city%>
+</p>
+<p>
+  <strong>Place:</strong>
+  <%= Place.find(@event.place_id) %>
+</p>
+      <table>
+  <tr>
+    <th>Ticket type</th>
+    <th>Price</th>
+    <th>City</th>
+    <th colspan="2"></th>
+  </tr>
+
+    <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.name %> </td>
+      <td><%= ticket.price %> </td>
+      <td><%= ticket.place_id%> </td>
+      <% if user_signed_in? %>
+      <td> <%= link_to 'BUY NOW', ticket_path(ticket) %></td>
+      <% else %>
+      <td> <%= link_to 'LOG IN TO BUY', new_user_session_path %></td>
+      <% end %>
+    </tr>
+
+    <% end %>
+</table>
+  </div>
+</div>
+
+
+<%= link_to 'Back', events_path %>

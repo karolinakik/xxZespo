@@ -1,0 +1,53 @@
+<!--afterlogin ? main page-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BOOX</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+      <div class="container-fluid">
+  <div class="jumbotron">
+      <%= render 'layouts/alerts' %>
+      <h1>Welcome !</h1>
+      <p><%= @user %></p>
+      <div class="left">
+      <% if user_signed_in? %>
+          <h1> Hello <%= current_user.name %></h1>
+          <h2> User data</h2>
+          <h3> Surname: <%= current_user.surname %> </h3>
+          <h3> Surname: <%= current_user.birthday_date %> </h3>
+          <h3> Email: <%= current_user.email %> </h3>
+          <h3> Phone: <%= current_user.phone %> </h3>
+          <h3> Address: <%= current_user.address %> </h3>
+          <%= link_to "Change your data", edit_user_registration_path %>
+        </div>
+        <div class="right">
+        <h2>History</h2>
+        </div>
+      <% else %>
+        <p> Log in for view! Click here: <%= link_to "Log in", new_user_session_path %></p>
+      <% end %>
+
+      <!-- Karola: -->
+      <%= link_to "Change your data", edit_user_registration_path %>
+      </div>
+      <div class="right">
+      <h2>History</h2>
+      <table>
+        <% @histories.each do |history| %>
+    <tr>
+      <td><%= history.id %> </td> 
+    </tr>
+  <% end %>
+      </table>
+      </div>
+
+          </div>
+      </div>
+    </body>
+  </html>

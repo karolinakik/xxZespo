@@ -1,0 +1,29 @@
+<%# <% @eventsaa.each do |even| %>  %>
+<!-- <h4>< %= even.title + " " + even.title % ></h4>  -->
+ <!-- send %> -->
+
+<div class="container-fluid">
+  <div class="jumbotron">
+      
+      <table>
+  <tr>
+    <th>Title</th>
+    <th>City</th>
+    <th>Organisator</th>
+    <th>Start time</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.title %> </td> 
+        <td><%= event.city %> </td>
+        <td><%= event.organiser %> </td>
+      <td><%= event.start_time %></td>
+              <td><%= link_to 'Show ', event_path(event) %></td>
+    </tr>
+          
+  <% end %>
+</table>
+  </div>
+</div>
