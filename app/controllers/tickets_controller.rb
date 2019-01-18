@@ -7,14 +7,15 @@ class TicketsController < ApplicationController
     
     def show
         @ticket = Ticket.find(params[:id])
-        @histories = History.all
+        @histories = current_user.histories
+        #@histories = History.all
     end
     
     def create 
-        history = History.new(history_params)
+        @history = History.new(history_params)
         
         if @history.save
-            redirect_to @dashboard
+            redirect_to dashboards_path
         else
             render 'new'
         end
@@ -22,7 +23,8 @@ class TicketsController < ApplicationController
         
     private
     def history_params
-        params.require(:ticket).permit(:name)
+        params.require(:ticket).permit(:name, :user_id, :event_id, :status,:order_data)
+
     end
     
 end

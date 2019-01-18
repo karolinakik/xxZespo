@@ -18,8 +18,8 @@
           </tr>
      </table>
 
-      <%= button_to 'Confirm', {:controller => "tickets", :action => "create", :name => @ticket.name, :ticket_id=> session[:id]} , {:method=>:post}  %>
-      
+     <%= button_to 'Confirm', {:controller => "tickets", :action => "create", ticket: { name: @ticket.name, user_id: current_user.id, event_id: 2, status:'d',order_data: Date.today}, :ticket_id=> session[:id]} , {:method=>:post}  %>
+
       <h2>History</h2>
       <table>
           <% @histories.each do |history| %>
@@ -29,7 +29,7 @@
                 <td><%= history.user_id %></td>
                 <td><%= history.order_data %></td>
                 <td><%= history.event_id %></td>
-                <td><%= history.estatus %></td>
+                <td><%= history.status %></td>
             </tr>
           <% end %>
       </table>

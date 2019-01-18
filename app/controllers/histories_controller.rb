@@ -8,9 +8,10 @@ class HisoriesController < ApplicationController
   end
 
   def create
-    @ticket = Order.create!(user: current_user, ticket: ticket)
-    if @order
+    @ticket = Order.new(user: current_user, ticket: ticket)
+    if @ticket.save
       save_to_history
+      redirect_to redirect_to histories_path
     end
   end
 

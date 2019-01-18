@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_01_15_155202) do
-
+ActiveRecord::Schema.define(version: 2019_01_18_001903) do
 
   create_table "events", id: :integer, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", limit: 45, null: false
@@ -48,14 +46,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_155202) do
     t.string "status", limit: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id", null: false, unsigned: true
-    t.timestamp "order_data", null: false
-    t.integer "event_id", null: false, unsigned: true
-    t.string "estatus", limit: 1, null: false
   end
 
   create_table "places", id: :integer, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -69,8 +60,10 @@ ActiveRecord::Schema.define(version: 2019_01_15_155202) do
     t.integer "quantity", null: false
     t.integer "place_id", null: false, unsigned: true
     t.integer "total_income"
+    t.bigint "user_id"
     t.index ["place_id"], name: "place_id"
-
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
 
   create_table "users", id: :integer, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 45, null: false
