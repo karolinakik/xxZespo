@@ -26,27 +26,30 @@
           <h3> Address: <%= current_user.address %> </h3>
           <%= link_to "Change your data", edit_user_registration_path %>
         </div>
-        <div class="right">
-        <h2>History</h2>
-        </div>
+        
       <% else %>
         <p> Log in for view! Click here: <%= link_to "Log in", new_user_session_path %></p>
       <% end %>
 
-      <!-- Karola: -->
-      <%= link_to "Change your data", edit_user_registration_path %>
-      </div>
-      <div class="right">
-      <h2>History</h2>
+      
+  </div>
+<% if user_signed_in? %>
+<div class="jumbotron">
+    <h2>History</h2>
       <table>
-        <% @histories.each do |history| %>
-    <tr>
-      <td><%= history.id %> </td> 
-    </tr>
-  <% end %>
+          <% @histories.each do |history| %>
+            <tr>
+              <td><%= history.id %> </td> 
+                <td><%= history.name %></td>
+                <td><%= history.user_id %></td>
+                <td><%= history.order_data %></td>
+                <td><%= history.event_id %></td>
+                <td><%= history.status %></td>
+            </tr>
+          <% end %>
       </table>
-      </div>
-
+  </div>
+<% end %>
           </div>
       </div>
     </body>

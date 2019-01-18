@@ -20,7 +20,11 @@
 
      <%= button_to 'Confirm', {:controller => "tickets", :action => "create", ticket: { name: @ticket.name, user_id: current_user.id, event_id: 2, status:'d',order_data: Date.today}, :ticket_id=> session[:id]} , {:method=>:post}  %>
 
-      <h2>History</h2>
+
+      
+  </div>
+  <div class="jumbotron">
+    <h2>History</h2>
       <table>
           <% @histories.each do |history| %>
             <tr>
@@ -33,6 +37,5 @@
             </tr>
           <% end %>
       </table>
-      
   </div>
 </div>
